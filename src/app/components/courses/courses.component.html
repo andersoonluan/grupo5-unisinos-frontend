@@ -1,0 +1,93 @@
+<mat-card class="card horizontal-center mt-5">
+    <mat-card-title>Cadastrar Curso</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="courseForm" (ngSubmit)="addCourse()">
+        <mat-form-field class="full-width-input" appearance="fill">
+          <mat-label>Nome Curso</mat-label>
+          <input
+            formControlName="name"
+            matInput
+            type="text"
+            placeholder="Ex. Engenharia de Software"
+          />
+          <mat-error>Por favor informe um nome válido.</mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width-input" appearance="fill">
+          <mat-label>Email</mat-label>
+          <input
+            formControlName="email"
+            matInput
+            type="email"
+            placeholder="Ex. andersonsouzar@edu.unisinos.br"
+          />
+          <mat-error>Por favor informe um email válido.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width-input" appearance="fill">
+            <mat-label>Descrição</mat-label>
+            <textarea
+              formControlName="description"
+              matInput
+              type="text"
+              rows="5"
+              placeholder="Ex. Engenharia de Software"
+            ></textarea>
+            <mat-error>Por favor informe uma descrição válido.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="full-width-input" appearance="fill">
+            <mat-label>Especialidade</mat-label>
+            <mat-select formControlName="specialization">
+                <mat-option value="SOFTWARE">SOFTWARE</mat-option>
+                <mat-option value="TECNOLOGIA">TECNOLOGIA</mat-option>
+                <mat-option value="COMUNICAÇÃO">COMUNICAÇÃO</mat-option>
+              </mat-select>
+            <mat-error>Por favor informe uma especialidade válido.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="full-width-input" appearance="fill">
+            <mat-label>Total Horas</mat-label>
+            <input
+              formControlName="totalHours"
+              matInput
+              type="number"
+              placeholder="Ex. 3600"
+            />
+            <mat-error>Por favor informe uma total de horas válido.</mat-error>
+          </mat-form-field>
+   
+          <mat-form-field class="full-width-input" appearance="fill">
+            <mat-label>Semesters</mat-label>
+            <input
+              formControlName="semesters"
+              matInput
+              type="number"
+              min="1"
+              max="10"
+              placeholder="Ex. 10"
+            />
+            <mat-error>Por favor informe um numero total de semestres válido.</mat-error>
+          </mat-form-field>
+   
+          <mat-form-field class="full-width-input" appearance="fill">
+            <mat-label>Type</mat-label>
+            <mat-select formControlName="type">
+                <mat-option value="PRESENCIAL">PRESENCIAL</mat-option>
+                <mat-option value="EAD">EAD</mat-option>
+              </mat-select>
+            <mat-error>Por favor informe um tipo válido.</mat-error>
+          </mat-form-field>
+    
+        <button
+          style="display: block; margin-top: 10px"
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="courseForm.invalid"
+        >
+          <span> Cadastrar </span>
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  

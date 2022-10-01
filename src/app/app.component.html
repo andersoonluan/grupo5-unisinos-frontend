@@ -1,0 +1,21 @@
+<mat-toolbar
+  style="display: flex; justify-content: space-between"
+>
+  <span>Grupo 5 - Escola</span>
+
+  <div *ngIf="!logged">
+    <a routerLink="sign-in" mat-stroked-button style="margin-right: 4px;"> Login</a>
+    <a routerLink="sign-up" mat-stroked-button> Cadastrar</a>
+  </div>
+ 
+
+  <div *ngIf="logged">
+    <a routerLink="dashboard" mat-stroked-button style="margin-right: 4px;"> Dashboard</a>
+    <a routerLink="adicionar-usuario" mat-stroked-button style="margin-right: 4px;" *ngIf="logged?.role === 'ADMIN'"> Adicionar Usuário</a>
+    <a routerLink="adicionar-curso" mat-stroked-button style="margin-right: 4px;" *ngIf="logged?.role === 'ADMIN'"> Adicionar Curso</a>
+    <a routerLink="adicionar-disciplina" mat-stroked-button style="margin-right: 4px;" *ngIf="logged?.role === 'ADMIN'"> Adicionar Disciplina</a>
+    <a mat-stroked-button style="margin-right: 4px;" (click)="logout()"> Logout</a>
+  </div>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

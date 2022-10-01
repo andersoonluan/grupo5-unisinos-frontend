@@ -1,0 +1,58 @@
+
+<mat-tab-group>
+  
+  <mat-tab label="Cursos Disponíveis ({{courses?.length}})"> 
+    <div *ngFor="let course of courses"  (click)="getCourse(course.id)">
+      <mat-card class="example-card" style="cursor: pointer;">
+        <mat-card-title>{{course.name}}</mat-card-title>
+        <mat-card-subtitle><b>Especialização:</b> {{course.specialization}} - <b>Tipo:</b> {{course.type}} - <b>Semestres:</b> {{course.semesters}} - <b>Horas:</b> {{course.totalHours}}
+        </mat-card-subtitle>
+        <mat-card-content>
+          <p>{{course.description}}</p>
+        </mat-card-content>
+        <mat-divider inset></mat-divider>
+      </mat-card>
+    </div>
+  </mat-tab>
+
+  <mat-tab label="Meus Cursos ({{information?.courses.length}})" *ngIf="information?.role !== 'ADMIN'"> 
+    <div *ngFor="let course of information?.courses"  (click)="getCourse(course.id)">
+      <mat-card class="example-card" style="cursor: pointer;">
+        <mat-card-title>{{course.name}}</mat-card-title>
+        <mat-card-subtitle><b>Especialização:</b> {{course.specialization}} - <b>Tipo:</b> {{course.type}} - <b>Semestres:</b> {{course.semesters}} - <b>Horas:</b> {{course.totalHours}}
+        </mat-card-subtitle>
+        <mat-card-content>
+          <p>{{course.description}}</p>
+        </mat-card-content>
+        <mat-divider inset></mat-divider>
+      </mat-card>
+    </div>
+  </mat-tab>
+  <mat-tab label="Minhas Disciplinas ({{information?.subjects.length}})" *ngIf="information?.role !== 'ADMIN'">
+    <div *ngFor="let subject of information?.subjects">
+      <mat-card class="example-card" style="cursor: pointer;">
+        <mat-card-title>{{subject.name}}</mat-card-title>
+        <mat-card-subtitle><b>Especialização:</b> {{subject.specialization}} - <b>Tipo:</b> {{subject.type}} - <b>Semestre:</b> {{subject.semester}} - <b>Horas:</b> {{subject.totalHours}}
+        </mat-card-subtitle>
+        <mat-card-content>
+          <p>{{subject.description}}</p>
+        </mat-card-content>
+        <mat-divider inset></mat-divider>
+      </mat-card>
+    </div>
+  </mat-tab>
+  <mat-tab label="Meu Financeiro" *ngIf="information?.role !== 'ADMIN'"> Meu Financeiro </mat-tab>
+  <mat-tab label="Meus Contratos" *ngIf="information?.role !== 'ADMIN'"> Meus Contratos </mat-tab>
+  <mat-tab label="Usuários ({{users?.length}})" *ngIf="information?.role === 'ADMIN'">
+    <div *ngFor="let user of users" >
+      <mat-card class="example-card" style="cursor: pointer;">
+        <mat-card-title>{{user.name}}</mat-card-title>
+        <mat-card-subtitle><b>Perfil:</b> {{user.role}} - <b>Email:</b> {{user.email}} 
+        </mat-card-subtitle>
+        <mat-divider inset></mat-divider>
+      </mat-card>
+    </div>  
+  </mat-tab>
+</mat-tab-group>
+
+

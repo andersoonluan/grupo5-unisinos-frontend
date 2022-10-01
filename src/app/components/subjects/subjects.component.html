@@ -1,0 +1,114 @@
+<mat-card class="card horizontal-center mt-5">
+    <mat-card-title>Cadastrar Disciplina</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="subjectsForm" (ngSubmit)="addSubject()">
+        <mat-form-field class="full-width-input" appearance="fill">
+          <mat-label>Nome da Disciplina</mat-label>
+          <input
+            formControlName="name"
+            matInput
+            type="text"
+            placeholder="Ex. Anderson Rodrigues"
+          />
+          <mat-error>Por favor informe um nome válido.</mat-error>
+        </mat-form-field>
+        
+        <mat-form-field class="full-width-input" appearance="fill">
+          <mat-label>Descrição</mat-label>
+          <textarea
+            formControlName="description"
+            matInput
+            type="text"
+            rows="5"
+            placeholder="Ex. Engenharia de Software"
+          ></textarea>
+          <mat-error>Por favor informe uma descrição válido.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width-input" appearance="fill">
+          <mat-label>Especialidade</mat-label>
+          <mat-select formControlName="specialization">
+              <mat-option value="SOFTWARE">SOFTWARE</mat-option>
+              <mat-option value="TECNOLOGIA">TECNOLOGIA</mat-option>
+              <mat-option value="COMUNICAÇÃO">COMUNICAÇÃO</mat-option>
+            </mat-select>
+          <mat-error>Por favor informe uma especialidade válido.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width-input" appearance="fill">
+          <mat-label>Total Horas</mat-label>
+          <input
+            formControlName="totalHours"
+            matInput
+            type="number"
+            placeholder="Ex. 3600"
+          />
+          <mat-error>Por favor informe uma total de horas válido.</mat-error>
+        </mat-form-field>
+ 
+        <mat-form-field class="full-width-input" appearance="fill">
+          <mat-label>Semestre</mat-label>
+          <input
+            formControlName="semester"
+            matInput
+            type="number"
+            min="1"
+            max="10"
+            placeholder="Ex. 10"
+          />
+          <mat-error>Por favor informe um numero total de semestre válido.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width-input" appearance="fill">
+          <mat-label>Créditos</mat-label>
+          <input
+            formControlName="credits"
+            matInput
+            type="number"
+            placeholder="Ex. 24"
+          />
+          <mat-error>Por favor informe número válido.</mat-error>
+        </mat-form-field>
+ 
+        <mat-form-field class="full-width-input" appearance="fill">
+          <mat-label>Type</mat-label>
+          <mat-select formControlName="type">
+              <mat-option value="PRESENCIAL">PRESENCIAL</mat-option>
+              <mat-option value="EAD">EAD</mat-option>
+            </mat-select>
+          <mat-error>Por favor informe um tipo válido.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width-input" appearance="fill">
+          <mat-label>Preço</mat-label>
+          <input
+            formControlName="defaultPrice"
+            matInput
+            type="number"
+            min="1"
+            placeholder="Ex. 499"
+          />
+          <mat-error>Por favor informe um preço válido.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width-input" appearance="fill">
+          
+          <mat-label>Cursos</mat-label>
+          <mat-select formControlName="courses" multiple>
+            <mat-option *ngFor="let course of coursesList" [value]="course.id">{{course.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <button
+          style="display: block; margin-top: 10px"
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="subjectsForm.invalid"
+        >
+          <span> Cadastrar </span>
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  

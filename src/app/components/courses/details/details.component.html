@@ -1,0 +1,70 @@
+
+<mat-tab-group>
+  
+    <mat-tab label="Informações do Curso"> 
+        <mat-card class="example-card" style="cursor: pointer;">
+          <mat-card-title>{{course?.name}}  <mat-chip-list aria-label="Fish selection" style="float:right;">
+            <mat-chip  *ngIf="this.isAssigned">Matrículado</mat-chip>
+          </mat-chip-list>
+          </mat-card-title>
+          <mat-card-subtitle>
+            <b>Email coordenação:</b> {{course?.email}}
+          </mat-card-subtitle>
+          <p><b>Especialização:</b> {{course?.specialization}}</p>
+          <p><b>Tipo:</b> {{course?.type}}</p>
+          <p><b>Semestres:</b> {{course?.semesters}} - <b>Horas:</b> {{course?.totalHours}}</p>
+          <mat-card-content>
+            <p><b>Descrição:</b> <br/> 
+                {{course?.description}}</p>
+          </mat-card-content>
+          <mat-divider inset></mat-divider>
+
+          <mat-card-actions>
+            <button mat-stroked-button *ngIf="!this.isAssigned">Realizar Matrícula</button>
+            <button mat-stroked-button>Pedir Informações</button>
+            <button mat-stroked-button style="background-color: #f1f1f1" *ngIf="information?.role === 'ADMIN'">Cadastrar Disciplina</button>
+          </mat-card-actions>
+        </mat-card>
+    </mat-tab>
+  
+    <mat-tab label="Disciplinas ({{course?.subjects.length}})" [disabled]="course?.subjects.length === 0"> 
+        <div *ngFor="let subject of course?.subjects">
+            <mat-card class="example-card">
+                <mat-card-title>{{subject?.name}}</mat-card-title>
+                <mat-card-subtitle><b>Especialização:</b> {{subject?.specialization}}</mat-card-subtitle>
+                <mat-card-content>
+                  <p>
+                    <b>Tipo:</b> {{subject.type}} - <b>Semestre:</b> {{subject.semester}} - <b>Horas:</b> {{subject.totalHours}} - <b>Preço: </b> R$ {{subject.defaultPrice}}
+                  </p>
+                  <p>
+                    <b>Descrição:</b> <br />
+                    {{subject.description}}
+                  </p>
+                </mat-card-content>
+                <mat-divider inset></mat-divider>
+              </mat-card>
+        </div>
+     
+    </mat-tab>
+    <mat-tab label="Alunos ({{course?.students.length}})" [disabled]="course?.students.length === 0"> 
+        <div *ngFor="let student of course?.students">
+            <mat-card class="example-card">
+                <mat-card-title>{{student?.name}}</mat-card-title>
+                <mat-card-subtitle><b>Email:</b> {{student?.email}}</mat-card-subtitle>
+                <mat-divider inset></mat-divider>
+              </mat-card>
+        </div>
+    </mat-tab>
+    <mat-tab label="Professores ({{course?.teachers.length}})" [disabled]="course?.teachers.length === 0"> 
+        <div *ngFor="let teacher of course?.teachers">
+            <mat-card class="example-card">
+                <mat-card-title>{{teacher?.name}}</mat-card-title>
+                <mat-card-subtitle><b>Email:</b> {{teacher?.email}}</mat-card-subtitle>
+                <mat-divider inset></mat-divider>
+              </mat-card>
+        </div>    
+    </mat-tab>
+  </mat-tab-group>
+  
+  
+  

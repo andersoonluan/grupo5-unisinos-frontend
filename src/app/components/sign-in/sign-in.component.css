@@ -1,0 +1,46 @@
+.card {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.horizontal-center {
+  margin: 0 auto;
+}
+
+.mt-5 {
+  margin-top: 100px;
+}
+
+.full-width-input {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner:before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  border-top-color: #000000;
+  animation: spinner 0.8s linear infinite;
+}

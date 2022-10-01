@@ -1,0 +1,27 @@
+{
+  "controls": [
+    {
+      "name": "Textbox",
+      "label": "TextBox",
+      "value": "",
+      "type": "textbox",
+      "controlType": "textbox",
+      "style": "outline",
+      "displayName": "Textbox",
+      "validators": {
+        "required": true,
+        "minLength": 3
+      }
+    },
+    {
+      "name": "button",
+      "label": "Button",
+      "value": "Submit",
+      "controlType": "button",
+      "type": "button",
+      "color": "primary",
+      "style": "mat-raised-button",
+      "displayName": "Button"
+    }
+  ]
+}
