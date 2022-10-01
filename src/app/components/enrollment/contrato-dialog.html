@@ -1,0 +1,53 @@
+<h2 mat-dialog-title>CONTRATO DE PRESTA&Ccedil;&Atilde;O DE SERVI&Ccedil;OS EDUCACIONAIS</h2>
+<mat-dialog-content class="mat-typography">
+  <div width="100%" style="overflow-y: auto;">
+  <p><b>PARTES CONTRATANTES</b></p>
+  
+  <p><b>CONTRATANTE:</b> {{data.user.name}}</p>
+  
+  <p><b>CONTRATADA:</b> INSTITUIÇÃO DE ENSINO ABC, com sede em Porto Alegre, na Rua Av. Dr. Nilo Peçanha, 1600 - Boa Vista, Porto Alegre - RS, 91330-002, inscrita no C.N.P.J. sob o n&ordm; XXXXXXXXXXXXX, e no Cadastro Estadual sob o n&ordm; (xxx), neste ato representada pelo seu diretor Grupo 5 da Unisinos</p>
+  
+  <p>As partes acima identificadas t&ecirc;m, entre si, justo e acertado o presente Contrato de Presta&ccedil;&atilde;o de Servi&ccedil;os Educacionais, que se reger&aacute; pelas cl&aacute;usulas seguintes e pelas condi&ccedil;&otilde;es de pre&ccedil;o, forma e termo de pagamento descritas no presente.</p>
+  
+  <hr>
+  
+  <p>DO OBJETO DO CONTRATO</p>
+  
+  <p>Cl&aacute;usula 1&ordf;. O presente contrato tem como OBJETO, a presta&ccedil;&atilde;o, pela CONTRATADA, de servi&ccedil;os educacionais, a serem realizados na Escola (xxx), localizada na Rua (xxx), n&ordm; (xxx), bairro (xxx), Cep (xxx), Cidade (xxx), no Estado (xxx), para o ano letivo de (xxx), em favor de (xxx) (Nome do Aluno), representado neste instrumento pelo CONTRATANTE.</p>
+  
+  <p>DA OBRIGA&Ccedil;&Acirc;O DA CONTRATADA</p>
+  
+  <p>Cl&aacute;usula 2&ordf;. &Eacute; obrigat&oacute;rio &agrave; CONTRATADA fornecer, gratuitamente, ao aluno, certificados de assiduidade e conclus&atilde;o, e o material para a realiza&ccedil;&atilde;o de provas.</p>
+  
+  <address>&nbsp;</address>
+  <hr>
+  <h3><b>CURSO CONTRATADO</b></h3>
+  <p>
+    <b>NOME:</b> {{data.course.name}} <br />
+    <b>MODALIDADE:</b> {{data.course.type}} <br />
+    <b>SEMESTRES:</b> {{data.course.semesters}} <br />
+    <b>HORAS:</b> {{data.course.totalHours}} <br />
+    <b>DESCRIÇÃO:</b> <br/> {{data.course.description}} <br />
+  </p>
+  <hr>
+  <h3><b>DISCIPLINAS CONTRATADAS</b></h3>
+  <div *ngFor="let subject of data?.subjects">
+    <p>
+      <b>NOME:</b> {{subject.name}} <br />
+      <b>CRÉDITOS:</b> {{subject.credits}} <br />
+      <b>HORAS:</b> {{subject.totalHours}} <br />
+      <b>MODALIDADE:</b> {{subject.type}} <br />
+      <b>SEMESTRE:</b> {{subject.semester}} <br />
+      <b>ESPECIALIDADE:</b> {{subject.specialization}} <br />
+      <b>PREÇO:</b> R$ {{subject.defaultPrice}} <br />
+    </p>
+    <hr>
+  </div>
+  <h1>TOTAL A PAGAR: <b>R$ {{data.total}}</b></h1>
+  
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>FECHAR</button>
+</mat-dialog-actions>
+

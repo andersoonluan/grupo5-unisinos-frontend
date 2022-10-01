@@ -62,7 +62,6 @@ export class AdminComponent implements OnInit {
     })
     this.subjectService.GetSubjects().then(result => {
       this.subjectsList = result;
-      console.log(`this.subjectsList`, this.subjectsList);
     })
   }
 
@@ -76,7 +75,6 @@ export class AdminComponent implements OnInit {
       this.adminForm.get('passwordConfirmation')?.value
     ) {
       this.auth.CreateUser(this.adminForm.value).then(created => {
-        console.log(`cirado?`, created);
         this.snackbar.open(`${this.adminForm.value.name} criado com sucesso!`, 'Fechar');
       setTimeout(() => {
           location.href = '/dashboard';

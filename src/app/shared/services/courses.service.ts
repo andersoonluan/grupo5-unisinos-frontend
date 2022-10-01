@@ -44,6 +44,22 @@ async CreateCourse(data: any) : Promise<any> {
   });
 }
 
+async CreateUserCourse(data: any) : Promise<any> {
+  const user: any = localStorage.getItem('currentUser');
+  const { token } = JSON.parse(user);
+
+  return this.http.post<any>(`${environment.api_key}/courses/users`, 
+  { ...data }, 
+  { headers: { Authorization: `bearer ${token}`} })
+  .pipe(map(created => {
+      if (created) {
+         return created;
+      }
+  })).toPromise().catch(err => {
+      throw new Error('Erro ao criar o curso');
+  });
+}
+
 async GetCourseById(id: string) : Promise<any> {
   const user: any = localStorage.getItem('currentUser');
   const { token } = JSON.parse(user);

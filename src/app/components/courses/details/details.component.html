@@ -3,7 +3,8 @@
   
     <mat-tab label="Informações do Curso"> 
         <mat-card class="example-card" style="cursor: pointer;">
-          <mat-card-title>{{course?.name}}  <mat-chip-list aria-label="Fish selection" style="float:right;">
+          <mat-card-title>{{course?.name}}  
+            <mat-chip-list aria-label="Fish selection" style="float:right;">
             <mat-chip  *ngIf="this.isAssigned">Matrículado</mat-chip>
           </mat-chip-list>
           </mat-card-title>

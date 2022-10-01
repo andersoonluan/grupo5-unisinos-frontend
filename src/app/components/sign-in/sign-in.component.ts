@@ -67,10 +67,10 @@ export class SignInComponent {
 
   googleAuthSDK() {
 
-    (<any>window)['googleSDKLoaded'] = () => {
+  /*   (<any>window)['googleSDKLoaded'] = () => {
       (<any>window)['gapi'].load('auth2', () => {
         this.auth2 = (<any>window)['gapi'].auth2.init({
-          client_id: 'YOUR CLIENT ID',
+          client_id: '682527256277-qd6roap5hvv689fsl1ku8h9qphtatm7a.apps.googleusercontent.com',
           plugin_name:'login',
           cookiepolicy: 'single_host_origin',
           scope: 'profile email'
@@ -86,6 +86,6 @@ export class SignInComponent {
       js.id = id;
       js.src = "https://apis.google.com/js/platform.js?onload=googleSDKLoaded";
       fjs?.parentNode?.insertBefore(js, fjs);
-    }(document, 'script', 'google-jssdk'));
+    }(document, 'script', 'google-jssdk')); */
   }
 }

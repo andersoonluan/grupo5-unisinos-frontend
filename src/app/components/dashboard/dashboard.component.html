@@ -41,7 +41,21 @@
       </mat-card>
     </div>
   </mat-tab>
-  <mat-tab label="Meu Financeiro" *ngIf="information?.role !== 'ADMIN'"> Meu Financeiro </mat-tab>
+  <mat-tab label="Meu Financeiro ({{information?.financial.length}})" *ngIf="information?.role !== 'ADMIN'"> 
+    <div *ngFor="let financial of information?.financial">
+      <mat-card class="example-card" style="cursor: pointer;">
+        <mat-card-title># Valor de R$ {{financial.price}}</mat-card-title>
+        <mat-chip-list style="float:right;">
+          <mat-chip>PENDENTE</mat-chip>
+        </mat-chip-list>
+        <mat-card-subtitle>
+          <b>Semestre:</b> {{financial.semester}} <br/>
+          <b>Ano:</b> {{financial.year}} <br/>
+        </mat-card-subtitle>
+        <mat-divider inset></mat-divider>
+      </mat-card>
+    </div>
+  </mat-tab>
   <mat-tab label="Meus Contratos" *ngIf="information?.role !== 'ADMIN'"> Meus Contratos </mat-tab>
   <mat-tab label="🙅 Usuários ({{users?.length}})" *ngIf="information?.role === 'ADMIN'">
     <div *ngFor="let user of users" >

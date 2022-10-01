@@ -20,15 +20,12 @@ export class AuthService {
   }
 
   SignUpUser(userData: any) {
-    console.log(`userData`, userData);
     const data = {
       name: userData.name,
       email: userData.email,
       password: userData.password,
       passwordConfirmation: userData.passwordConfirmation
     }
-    console.log(`MERDAAAA`, data);
-
     return this.http.post(`${environment.api_key}/auth/signup/student`, { ...data });
   }
 
@@ -41,7 +38,6 @@ export class AuthService {
 
     return this.http.post<any>(`${environment.api_key}/auth/signin`, { ...data })
     .pipe(map(user => {
-      console.log(`user`, user.data);
         if (user.data.token) {
             localStorage.setItem('currentUser', JSON.stringify(user.data));
         }
@@ -97,8 +93,6 @@ async GetUserById(userId: any = null) : Promise<any> {
     delete userData.type;
     return this.http.post<any>(`${environment.api_key}/auth/signup/${userType}`, { ...userData })
     .pipe(map(user => {
-      console.log(`user`, user.data);
-         console.log(`user`, user);
         return user.data;
     })).toPromise().catch(() => {
         throw new Error('Erro ao cadastrar o usuário!');

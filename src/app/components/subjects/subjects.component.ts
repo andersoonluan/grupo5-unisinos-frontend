@@ -46,7 +46,6 @@ export class SubjectsComponent implements OnInit {
   }
 
   addSubject() {
-    console.log(`Disciplinas`, this.subjectsForm.value);
     this.subjectService.CreateSubject(this.subjectsForm.value).then(subject => {
       this.snackbar.open(`${this.subjectsForm.value.name} criado com sucesso!`, 'Fechar');
       setTimeout(() => {

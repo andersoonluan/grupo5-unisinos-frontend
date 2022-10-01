@@ -22,7 +22,22 @@ async CreateSubject(data: any) : Promise<any> {
   { ...data, subjects:[] }, 
   { headers: { Authorization: `bearer ${token}`} })
   .pipe(map(created => {
-    console.log(`created`, created);
+      if (created) {
+         return created;
+      }
+  })).toPromise().catch(err => {
+      throw new Error('Erro ao criar disciplina');
+  });
+}
+
+async CreateUserSubject(data: any) : Promise<any> {
+  const user: any = localStorage.getItem('currentUser');
+  const { token } = JSON.parse(user);
+
+  return this.http.post<any>(`${environment.api_key}/subjects/users`, 
+  { ...data }, 
+  { headers: { Authorization: `bearer ${token}`} })
+  .pipe(map(created => {
       if (created) {
          return created;
       }

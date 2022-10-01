@@ -31,16 +31,16 @@ export class DashboardComponent implements OnInit {
       this.courses = data;
     })
 
-    this.authService.GetAllUsers().then(users => {
-      console.log(`users`, users);
-      this.users = users;
-    })
+    if(this.information?.type === 'ADMIN'){
+      this.authService.GetAllUsers().then(users => {
+        this.users = users;
+      })
+    }
   }
 
   ngOnInit(): void {}
 
   getCourse(id: string): any {
-    console.log(`id`, id);
     location.href = `/curso/${id}`
   }
 

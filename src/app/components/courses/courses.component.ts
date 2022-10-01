@@ -60,9 +60,7 @@ export class CoursesComponent implements OnInit {
 
 
   addCourse() {
-   console.log(`test`, this.courseForm.value);
    this.courseService.CreateCourse(this.courseForm.value).then(created => {
-    console.log(`curso criado?`, created);
     this.snackbar.open(`${this.courseForm.value.name} criado com sucesso!`, 'Fechar');
     setTimeout(() => {
         location.href = '/dashboard';

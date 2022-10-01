@@ -31,7 +31,6 @@ export class CoursesDetailsComponent implements OnInit {
       this.information = data.user;
     });
     const courseId: any = this.route.snapshot.paramMap.get('id');
-    console.log(`courseId`, courseId);
     this.courseService.GetCourseById(courseId).then(course => {
         this.course = course;
         this.isAssigned = this.course?.students?.some((student: any) => student.id === this.user?.id);

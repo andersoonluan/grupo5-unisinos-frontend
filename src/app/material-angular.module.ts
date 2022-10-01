@@ -18,6 +18,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatListModule } from '@angular/material/list';
 
 const modules = [
   MatSliderModule,
@@ -36,7 +37,8 @@ const modules = [
   MatProgressSpinnerModule,
   MatTabsModule,
   MatDividerModule,
-  MatChipsModule
+  MatChipsModule,
+  MatListModule
 ];
 
 @NgModule({
