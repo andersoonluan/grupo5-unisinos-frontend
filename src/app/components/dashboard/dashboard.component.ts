@@ -31,11 +31,9 @@ export class DashboardComponent implements OnInit {
       this.courses = data;
     })
 
-    if(this.information?.type === 'ADMIN'){
-      this.authService.GetAllUsers().then(users => {
-        this.users = users;
-      })
-    }
+    this.authService.GetAllUsers().then(users => {
+      this.users = users;
+    })
   }
 
   ngOnInit(): void {}
