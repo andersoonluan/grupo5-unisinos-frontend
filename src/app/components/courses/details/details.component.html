@@ -21,22 +21,11 @@
           <mat-divider inset></mat-divider>
 
           <mat-card-actions>
-            <button mat-stroked-button *ngIf="!this.isAssigned">Realizar Matrícula</button>
-            <button mat-stroked-button>Pedir Informações</button>
-            <button mat-stroked-button style="background-color: #f1f1f1" *ngIf="information?.role === 'ADMIN'">Cadastrar Disciplina</button>
+            <button mat-stroked-button *ngIf="!this.isAssigned" routerLink="realizar-matricula">Realizar Matrícula</button>
+            <button mat-stroked-button style="background-color: #f1f1f1" *ngIf="information?.role === 'ADMIN'" routerLink="adicionar-disciplina">Cadastrar Disciplina</button>
           </mat-card-actions>
         </mat-card>
     </mat-tab>
-
-    <mat-tab label="Turmas"> 
-      <div *ngFor="let teacher of course?.teachers">
-          <mat-card class="example-card">
-              <mat-card-title>{{teacher?.name}}</mat-card-title>
-              <mat-card-subtitle><b>Email:</b> {{teacher?.email}}</mat-card-subtitle>
-              <mat-divider inset></mat-divider>
-            </mat-card>
-      </div>    
-  </mat-tab>
   
     <mat-tab label="Disciplinas ({{course?.subjects.length}})" [disabled]="course?.subjects.length === 0"> 
         <div *ngFor="let subject of course?.subjects">
