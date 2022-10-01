@@ -12,8 +12,6 @@ import { ElementRef, ViewChild } from '@angular/core';
 })
 export class SignInComponent {
   hide = true;
-  auth2: any;
-  @ViewChild('loginRef', { static: true }) loginElement!: ElementRef;
   
   signinForm = new FormGroup({
     email: new FormControl(' ', [Validators.email, Validators.required]),
@@ -31,7 +29,6 @@ export class SignInComponent {
 
   ngOnInit() {
     localStorage.removeItem('currentUser');
-    this.googleAuthSDK();
   }
   signinUser() {
     this.auth.SignInUser(this.signinForm.value).then(logged => {
@@ -41,51 +38,16 @@ export class SignInComponent {
     })
   }
 
-  loginWithGoogle() {
-    
-  }
-
-  callLogin() {
-
-    this.auth2.attachClickHandler(this.loginElement.nativeElement, {},
-      (googleAuthUser: any) => {
-
-        //Print profile details in the console logs
-
-        let profile = googleAuthUser.getBasicProfile();
-        console.log('Token || ' + googleAuthUser.getAuthResponse().id_token);
-        console.log('ID: ' + profile.getId());
-        console.log('Name: ' + profile.getName());
-        console.log('Image URL: ' + profile.getImageUrl());
-        console.log('Email: ' + profile.getEmail());
-
-      }, (error: any) => {
-        alert(JSON.stringify(error, undefined, 2));
-      });
-
-  }
-
-  googleAuthSDK() {
-
-  /*   (<any>window)['googleSDKLoaded'] = () => {
-      (<any>window)['gapi'].load('auth2', () => {
-        this.auth2 = (<any>window)['gapi'].auth2.init({
-          client_id: '682527256277-qd6roap5hvv689fsl1ku8h9qphtatm7a.apps.googleusercontent.com',
-          plugin_name:'login',
-          cookiepolicy: 'single_host_origin',
-          scope: 'profile email'
-        });
-        this.callLogin();
-      });
-    }
-
-    (function (d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) { return; }
-      js = d.createElement('script');
-      js.id = id;
-      js.src = "https://apis.google.com/js/platform.js?onload=googleSDKLoaded";
-      fjs?.parentNode?.insertBefore(js, fjs);
-    }(document, 'script', 'google-jssdk')); */
+  async loginWithGoogle() {
+    const user:any = await this.auth.GoogleAuth();
+    this.auth.SignInWithGoogleUser({
+      email: user.email,
+      name: user.name || `${user.given_name} ${user.family_name}`,
+      password: user.id
+    }).then(data => {
+      location.href = '/dashboard';
+    }).catch(() => {
+      this.snackbar.open('Usuário ou senha inválidos!', 'Fechar');
+    }) 
   }
 }

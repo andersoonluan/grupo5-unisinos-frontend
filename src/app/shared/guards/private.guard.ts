@@ -19,7 +19,7 @@ export class PrivateGuard implements CanActivate {
     | boolean
     | UrlTree {
     if (localStorage.getItem('currentUser') === null) {
-      this.router.navigate(['sign-in']);
+      this.router.navigate(['acessar']);
     }
     return true;
   }

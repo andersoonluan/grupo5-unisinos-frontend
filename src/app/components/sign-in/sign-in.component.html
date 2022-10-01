@@ -33,7 +33,7 @@
         <mat-error>Password length should be more than 3 characters.</mat-error>
       </mat-form-field>
       <button
-        style="display: block"
+        style="width: 100%"
         color="primary"
         mat-flat-button
         type="submit"
@@ -42,9 +42,11 @@
         <span> Acessar Sistema </span> 
        
       </button>
-    <!--   <button #loginRef mat-raised-button class="google-login-btn">
-        Google
-      </button>    -->
+  
     </form>
+    
   </mat-card-content>
+  <button mat-raised-button class="google-login-btn" (click)="loginWithGoogle()">
+    <img src="https://img.icons8.com/color/344/google-logo.png" width="16" style="margin-right: 8px;" />Login com Google
+  </button> 
 </mat-card>

@@ -19,7 +19,7 @@ export class AdminGuard implements CanActivate {
     | boolean
     | UrlTree {
     if (localStorage.getItem('currentUser') === null) {
-      this.router.navigate(['sign-in']);
+      this.router.navigate(['acessar']);
     }
     const user: any = localStorage.getItem('currentUser');
     const parsedUser: any = JSON.parse(user);

@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
-import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { PrivateGuard } from './shared/guards/private.guard';
 import { ProtectedGuard } from './shared/guards/protected.guard';
 import { CoursesComponent } from './components/courses/courses.component';
@@ -11,17 +10,18 @@ import { CoursesDetailsComponent } from './components/courses/details/details.co
 import { AdminComponent } from './components/student/admin.component';
 import { SubjectsComponent } from './components/subjects/subjects.component';
 import { EnrollmentComponent } from './components/enrollment/enrollment.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'sign-in', pathMatch: 'full' },
+  { path: '', redirectTo: 'acessar', pathMatch: 'full' },
   {
-    path: 'sign-in',
+    path: 'acessar',
     component: SignInComponent,
     canActivate: [ProtectedGuard],
   },
   {
-    path: 'sign-up',
-    component: SignUpComponent,
+    path: 'registro',
+    component: RegisterComponent,
     canActivate: [ProtectedGuard],
   },
   {

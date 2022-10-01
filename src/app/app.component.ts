@@ -21,6 +21,6 @@ export class AppComponent {
 
   logout() {
     localStorage.removeItem('currentUser');
-    location.href = "/sign-in";
+    location.href = "/acessar";
   }
 }

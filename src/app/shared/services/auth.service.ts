@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 import { map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { LoginUserData, APIUser } from '../models';
-
+import { GoogleAuthProvider } from 'firebase/auth';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 @Injectable({
   providedIn: 'root',
 })
@@ -13,10 +14,29 @@ export class AuthService {
   constructor(
     public http: HttpClient,
     public router: Router,
+    public afAuth: AngularFireAuth
   ) {
     if (localStorage.getItem('user') !== null) {
       this.userDataFromApi = JSON.parse(localStorage.getItem('user')!);
     }
+  }
+
+  // Sign in with Google
+  async GoogleAuth() {
+    return await this.AuthLogin(new GoogleAuthProvider());
+  }
+
+  // Auth logic to run auth providers
+  async AuthLogin(provider: any) {
+    return await this.afAuth
+      .signInWithPopup(provider)
+      .then((result) => {
+        console.log('You have been successfully logged in!');
+        return result.additionalUserInfo?.profile;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   SignUpUser(userData: any) {
@@ -47,6 +67,19 @@ export class AuthService {
     });    
   }
 
+  async SignInWithGoogleUser(userData: any): Promise<any> {
+
+    return this.http.post<any>(`${environment.api_key}/auth/signin/google`, { ...userData })
+    .pipe(map(user => {
+        if (user.data.token) {
+            localStorage.setItem('currentUser', JSON.stringify(user.data));
+        }
+        return user.data;
+    })).toPromise().catch(() => {
+        throw new Error('Usuário ou senha invalidos!');
+    });    
+  }
+
   async GetLoggedUser() : Promise<any> {
     const user: any = localStorage.getItem('currentUser');
     const { token } = JSON.parse(user);
@@ -57,7 +90,7 @@ export class AuthService {
         return res;
     })).toPromise().catch(err => {
         localStorage.removeItem('currentUser');
-        location.href = "sign-in";
+        location.href = "acessar";
     });
 }
 
@@ -77,7 +110,7 @@ async GetUserById(userId: any = null) : Promise<any> {
   SignOutUser() {
     localStorage.removeItem('currentUser');
     this.userDataFromApi = null;
-    this.router.navigate(['sign-in']);
+    this.router.navigate(['acessar']);
   }
 
   async CreateUser(userData: any): Promise<any> {
