@@ -21,8 +21,8 @@
           <mat-divider inset></mat-divider>
 
           <mat-card-actions>
-            <button mat-stroked-button *ngIf="!this.isAssigned" routerLink="realizar-matricula">Realizar Matrícula</button>
-            <button mat-stroked-button style="background-color: #f1f1f1" *ngIf="information?.role === 'ADMIN'" routerLink="adicionar-disciplina">Cadastrar Disciplina</button>
+            <button mat-stroked-button *ngIf="!this.isAssigned" (click)="realizarMatricula()">Realizar Matrícula</button>
+            <button mat-stroked-button style="background-color: #f1f1f1" *ngIf="information?.role === 'ADMIN'" (click)="cadastrarDisciplina()">Cadastrar Disciplina</button>
           </mat-card-actions>
         </mat-card>
     </mat-tab>

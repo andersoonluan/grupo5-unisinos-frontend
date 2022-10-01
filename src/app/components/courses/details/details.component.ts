@@ -39,4 +39,11 @@ export class CoursesDetailsComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  cadastrarDisciplina(): void {
+    location.href = "adicionar-disciplina"
+  }
+
+  realizarMatricula(): void {
+    location.href = "realizar-matricula";
+  }
 }
