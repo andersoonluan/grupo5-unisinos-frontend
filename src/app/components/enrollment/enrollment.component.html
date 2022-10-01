@@ -1,0 +1,42 @@
+<mat-card class="card horizontal-center mt-5">
+    <mat-card-title>Realizar Matrícula</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="enrollmentForm" (ngSubmit)="addEnrollment()">
+
+          <mat-form-field class="full-width-input" appearance="fill">
+          
+            <mat-label>Cursos</mat-label>
+            <mat-select formControlName="courses">
+              <mat-option *ngFor="let course of coursesList" [value]="course.id" (click)="selectCourse(course.id)">{{course.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="full-width-input" appearance="fill">
+          
+            <mat-label>Disciplinas</mat-label>
+            <mat-select formControlName="subjects" multiple>
+               
+              <mat-option *ngFor="let subject of this.selectedCourse?.subjects" [value]="subject">R$ {{subject.defaultPrice}} - <b>{{subject.name}}</b> - {{subject.totalHours}} horas - {{subject.credits}} créditos</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <div *ngIf="!enrollmentForm.invalid" style="margin-bottom: 20px;">
+            <p style="font-size: 16px; float:right;">
+                <b>Total: </b> R$ <span> {{calcEvent(this.enrollmentForm.value.subjects)}}</span>
+            </p>
+          </div>
+         
+    
+        <button
+          style="display: block; margin-top: 10px"
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="enrollmentForm.invalid"
+        >
+          <span> Confirmar Matrícula  <span *ngIf="!enrollmentForm.invalid">(R$ {{calcEvent(this.enrollmentForm.value.subjects)}})</span></span>
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  

@@ -17,6 +17,7 @@ import { CoursesDetailsComponent } from './components/courses/details/details.co
 import { AdminComponent } from './components/student/admin.component';
 import { SubjectsComponent } from './components/subjects/subjects.component';
 import { SubjectsService } from './shared/services/subjects.service';
+import { EnrollmentComponent } from './components/enrollment/enrollment.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { SubjectsService } from './shared/services/subjects.service';
     CoursesComponent,
     CoursesDetailsComponent,
     AdminComponent,
-    SubjectsComponent
+    SubjectsComponent,
+    EnrollmentComponent
   ],
   imports: [
     BrowserModule,

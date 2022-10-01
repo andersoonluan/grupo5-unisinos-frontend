@@ -1,7 +1,7 @@
 <mat-toolbar
-  style="display: flex; justify-content: space-between"
+  style="display: flex; justify-content: space-between;"
 >
-  <span>Grupo 5 - Escola</span>
+  <span>Grupo 5 - Instituição de Ensino ABC</span>
 
   <div *ngIf="!logged">
     <a routerLink="sign-in" mat-stroked-button style="margin-right: 4px;"> Login</a>
@@ -10,11 +10,12 @@
  
 
   <div *ngIf="logged">
-    <a routerLink="dashboard" mat-stroked-button style="margin-right: 4px;"> Dashboard</a>
-    <a routerLink="adicionar-usuario" mat-stroked-button style="margin-right: 4px;" *ngIf="logged?.role === 'ADMIN'"> Adicionar Usuário</a>
-    <a routerLink="adicionar-curso" mat-stroked-button style="margin-right: 4px;" *ngIf="logged?.role === 'ADMIN'"> Adicionar Curso</a>
-    <a routerLink="adicionar-disciplina" mat-stroked-button style="margin-right: 4px;" *ngIf="logged?.role === 'ADMIN'"> Adicionar Disciplina</a>
-    <a mat-stroked-button style="margin-right: 4px;" (click)="logout()"> Logout</a>
+    <a routerLink="dashboard" mat-stroked-button style="margin-right: 4px;"> 🚀 Dashboard</a>
+    <a routerLink="adicionar-usuario" mat-stroked-button style="margin-right: 4px;" *ngIf="logged?.role === 'ADMIN'">🧑‍🎓 Adicionar Usuário</a>
+    <a routerLink="adicionar-curso" mat-stroked-button style="margin-right: 4px;" *ngIf="logged?.role === 'ADMIN'">🏫 Adicionar Curso</a>
+    <a routerLink="adicionar-disciplina" mat-stroked-button style="margin-right: 4px;" *ngIf="logged?.role === 'ADMIN'"> 👨‍🏫 Adicionar Disciplina</a>
+    <a routerLink="realizar-matricula" mat-stroked-button style="margin-right: 4px;"> 🥂 Realizar Matrícula</a>
+    <a mat-stroked-button style="margin-right: 4px;" (click)="logout()">😢 Logout</a>
   </div>
 </mat-toolbar>
 

@@ -10,6 +10,7 @@ import { AdminGuard } from './shared/guards/admin.guard';
 import { CoursesDetailsComponent } from './components/courses/details/details.component';
 import { AdminComponent } from './components/student/admin.component';
 import { SubjectsComponent } from './components/subjects/subjects.component';
+import { EnrollmentComponent } from './components/enrollment/enrollment.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'sign-in', pathMatch: 'full' },
@@ -42,6 +43,11 @@ const routes: Routes = [
     path: 'adicionar-disciplina',
     component: SubjectsComponent,
     canActivate: [AdminGuard],
+  },
+  {
+    path: 'realizar-matricula',
+    component: EnrollmentComponent,
+    canActivate: [PrivateGuard],
   },
   {
     path: 'curso/:id',
