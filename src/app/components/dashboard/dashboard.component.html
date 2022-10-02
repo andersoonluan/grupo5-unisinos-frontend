@@ -55,9 +55,6 @@
         <mat-divider inset></mat-divider>
       </mat-card>
     </div>
-    <div *ngIf="information?.financial?.length > 0">
-      <span style="padding-left: 5px;">Nenhum valor pendente encontrado!</span>
-    </div>
   </mat-tab>
   <mat-tab label="🙅 Usuários ({{users?.length}})" *ngIf="information?.role === 'ADMIN'">
     <div *ngFor="let user of users" >
